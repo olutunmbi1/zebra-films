@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zebra Films</title>
+<meta name="description" content="Zebra Films LLC is the post-production company of editor Temitope Olutunmbi. Editing for networks, brands and independent film.">
+<meta property="og:title" content="Zebra Films">
+<meta property="og:description" content="Editing for networks, brands and independent film.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink: #000000;
+    --mist: #eceef2;
+    --steel: #5a616e;
+    --line: #cfd3da;
+    --cobalt: #1f3fd1;
+    --zb: #000000;
+    --zw: #ffffff;
+    --gutter: clamp(16px, 4vw, 48px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121417; --ink: #f4f5f7; --mist: #1e2127; --steel: #9ba2ae; --line: #2e333b; --cobalt: #8a9dff;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #121417; --ink: #f4f5f7; --mist: #1e2127; --steel: #9ba2ae; --line: #2e333b; --cobalt: #8a9dff;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif; font-size: 18px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+  .wide { font-stretch: 125%; }
+
+  /* Header */
+  header.site { border-bottom: 1px solid var(--line); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 72px; flex-wrap: wrap; }
+  .mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-stretch: 125%; font-size: 20px; letter-spacing: -0.01em; }
+  .mark img { height: 34px; width: auto; }
+  .on-dark { display: none; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .on-light { display: none; } :root:not([data-theme="light"]) .on-dark { display: block; } }
+  :root[data-theme="dark"] .on-light { display: none; } :root[data-theme="dark"] .on-dark { display: block; }
+  .signoff { padding: 0 0 clamp(56px, 8vw, 96px); }
+  .signoff img { width: clamp(96px, 12vw, 140px); height: auto; }
+  nav.primary ul { list-style: none; display: flex; gap: clamp(14px, 3vw, 32px); margin: 0; padding: 0; }
+  nav.primary a { text-decoration: none; font-size: 16px; font-weight: 500; }
+  nav.primary a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* Hero */
+  .hero { padding: clamp(56px, 10vw, 128px) 0 clamp(40px, 6vw, 72px); }
+  .hero h1 {
+    margin: 0; font-weight: 800; font-stretch: 125%; letter-spacing: -0.035em;
+    font-size: clamp(40px, 7.4vw, 104px); line-height: 0.98; max-width: 14ch;
+  }
+  .hero p { margin: 32px 0 0; max-width: 46ch; font-size: clamp(18px, 1.6vw, 21px); color: var(--steel); }
+  .hero p strong { color: var(--ink); font-weight: 600; }
+
+  /* The one bold element: camera exposure zebras */
+  .zebra {
+    height: clamp(56px, 9vw, 120px);
+    background-image: linear-gradient(-45deg, var(--zb) 25%, var(--zw) 25%, var(--zw) 50%, var(--zb) 50%, var(--zb) 75%, var(--zw) 75%);
+    background-size: 44px 44px;
+    border-top: 2px solid var(--zb); border-bottom: 2px solid var(--zb);
+    animation: crawl 0.9s linear 4;
+  }
+  @keyframes crawl { to { background-position: 44px 0; } }
+
+  section { scroll-margin-top: 24px; }
+  .block { padding: clamp(64px, 9vw, 120px) 0; border-bottom: 1px solid var(--line); }
+  h2 { margin: 0 0 32px; font-weight: 800; font-stretch: 125%; letter-spacing: -0.02em; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.05; }
+
+  /* Reel */
+  .frame { position: relative; aspect-ratio: 16 / 9; background: var(--mist); overflow: hidden; }
+  .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .frame.empty {
+    display: grid; place-items: center; text-align: center;
+    background-image: linear-gradient(-45deg, var(--mist) 25%, transparent 25%, transparent 50%, var(--mist) 50%, var(--mist) 75%, transparent 75%);
+    background-size: 44px 44px; background-color: var(--paper); border: 1px solid var(--line);
+  }
+  .frame.empty span { background: var(--paper); padding: 10px 18px; font-weight: 600; }
+
+  /* Work */
+  .work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+  .work-head h2 { margin: 0; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filters button {
+    font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+    background: transparent; color: var(--ink); border: 1.5px solid var(--ink); padding: 8px 16px; border-radius: 999px;
+  }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .filters button span { font-weight: 400; opacity: .7; margin-left: 4px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 48px 28px; list-style: none; margin: 0; padding: 0; }
+  .card { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: none; border: 0; padding: 0; }
+  button.card { cursor: pointer; }
+  .thumb { position: relative; aspect-ratio: 16 / 9; background: var(--mist); overflow: hidden; margin-bottom: 16px; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb .slate {
+    position: absolute; inset: 0; padding: 18px 20px; display: flex; align-items: flex-end;
+    font-weight: 800; font-stretch: 125%; letter-spacing: -0.02em; font-size: clamp(20px, 2vw, 26px); line-height: 1.02;
+    color: var(--steel);
+  }
+  .thumb .play {
+    position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--ink); display: grid; place-items: center; opacity: 0; transition: opacity .2s;
+  }
+  .thumb .play::after { content: ""; border-left: 13px solid var(--paper); border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 4px; }
+  button.card:hover .play, button.card:focus-visible .play { opacity: 1; }
+  button.card:hover .thumb::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 10px;
+    background-image: linear-gradient(-45deg, var(--zb) 25%, var(--zw) 25%, var(--zw) 50%, var(--zb) 50%, var(--zb) 75%, var(--zw) 75%);
+    background-size: 14px 14px;
+  }
+  .card h3 { margin: 0 0 4px; font-size: 19px; font-weight: 650; line-height: 1.3; }
+  .card .meta { margin: 0; font-size: 15px; color: var(--steel); }
+  .card .kind { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; border: 1px solid var(--line); padding: 2px 10px; border-radius: 999px; color: var(--steel); }
+
+  /* Clients */
+  .clients p { margin: 0; font-weight: 700; font-stretch: 112%; font-size: clamp(24px, 3.4vw, 42px); line-height: 1.25; letter-spacing: -0.015em; max-width: 24ch; }
+  .clients p span { color: var(--steel); font-weight: 400; }
+
+  /* Services */
+  .services dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 40px 48px; }
+  .services dt { font-weight: 700; font-size: 20px; margin-bottom: 8px; padding-top: 16px; border-top: 2px solid var(--ink); }
+  .services dd { margin: 0; color: var(--steel); max-width: 38ch; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+  .portrait { aspect-ratio: 4 / 5; background: var(--mist); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .about p { margin: 0 0 20px; max-width: 58ch; }
+  .about .founder { color: var(--steel); }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } .portrait { max-width: 360px; } }
+
+  /* Contact */
+  .contact { padding: clamp(80px, 12vw, 160px) 0; }
+  .contact p { margin: 0 0 20px; color: var(--steel); max-width: 44ch; }
+  .contact a.mail {
+    display: inline-block; font-weight: 800; font-stretch: 125%; letter-spacing: -0.03em;
+    font-size: clamp(30px, 6vw, 80px); line-height: 1; text-decoration-thickness: 3px; text-underline-offset: 10px; word-break: break-word;
+  }
+  .contact a.mail:hover { color: var(--cobalt); }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; font-size: 15px; color: var(--steel); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; flex-wrap: wrap; }
+
+  /* Player */
+  dialog { width: min(1100px, 94vw); padding: 0; border: 0; background: #000; color: #fff; }
+  dialog::backdrop { background: rgba(0,0,0,.82); }
+  dialog .bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 16px; background: var(--paper); color: var(--ink); }
+  dialog .bar strong { font-weight: 650; }
+  dialog .bar button { font: inherit; font-weight: 600; background: none; border: 1.5px solid var(--ink); color: var(--ink); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .zebra { animation: none; }
+    .thumb .play { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Zebra Films home"><img class="on-light" src="assets/z-black.png" alt=""><img class="on-dark" src="assets/z-white.png" alt="">Zebra Films</a>
+    <nav class="primary" aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Editing for networks, brands and independent film.</h1>
+      <p>Zebra Films is the post-production company of editor <strong>Temitope Olutunmbi</strong>, with over a decade of cutting for Comedy Central, VH1, VICE, Nike and filmmakers telling their own stories.</p>
+    </div>
+  </section>
+  <div class="zebra" aria-hidden="true"></div>
+
+  <section id="reel" class="block" aria-label="Reel">
+    <div class="wrap">
+      <h2>Reel</h2>
+      <div class="frame" id="reelFrame"></div>
+    </div>
+  </section>
+
+  <section id="work" class="block">
+    <div class="wrap">
+      <div class="work-head">
+        <h2>Selected work</h2>
+        <div class="filters" role="group" aria-label="Filter projects" id="filters"></div>
+      </div>
+      <ul class="grid" id="grid"></ul>
+    </div>
+  </section>
+
+  <section class="block clients" aria-labelledby="clientsTitle">
+    <div class="wrap">
+      <h2 id="clientsTitle">Clients and networks</h2>
+      <p>Comedy Central, Mass Appeal, Omaha Productions, VH1, MTV, VICE, Paramount, Nike, NationSwell, AARP, Bustle<span>, and independent directors and artists.</span></p>
+    </div>
+  </section>
+
+  <section id="services" class="block services">
+    <div class="wrap">
+      <h2>Services</h2>
+      <dl>
+        <div><dt>Editing</dt><dd>Long and short-form editorial for series, documentary, branded content and short films, from first assembly to picture lock.</dd></div>
+        <div><dt>Trailers and promos</dt><dd>Cut-downs that sell the story: trailers, teasers and promo spots for broadcast and streaming.</dd></div>
+        <div><dt>Social and web</dt><dd>Platform-ready versions in every aspect ratio, built for how people actually watch.</dd></div>
+        <div><dt>Post workflow</dt><dd>Organized projects, review stringouts and clean turnovers so producers and clients can give notes fast.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="about" class="block about">
+    <div class="wrap about-grid">
+      <div class="portrait">
+        <img src="assets/temi.jpg" alt="Temitope Olutunmbi in a field in upstate New York" onerror="this.parentElement.remove(); document.querySelector('.about-grid').style.gridTemplateColumns='1fr'">
+      </div>
+      <div>
+        <h2>About</h2>
+        <p>Zebra Films LLC is led by Temitope Olutunmbi, an editor who has spent over ten years in post-production. His work spans network series and promos for Comedy Central, VH1 and VICE, brand work for Nike and NationSwell, and independent narrative shorts made with directors he believes in.</p>
+        <p>Whatever the budget, the job is the same: find the story in the footage and deliver it on time.</p>
+        <p class="founder">Temitope also writes and makes work about film and AI at <a href="https://temiolutunmbi.com">temiolutunmbi.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Start a project</h2>
+      <p>Tell us what you're making, your timeline and where it will run.</p>
+      <a class="mail" id="mail" href="#"></a>
+    </div>
+  </section>
+  <div class="signoff"><div class="wrap">
+    <img class="on-light" src="assets/logo-black.png" alt="Zebra Films">
+    <img class="on-dark" src="assets/logo-white.png" alt="Zebra Films">
+  </div></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> Zebra Films LLC</span>
+    <ul id="social"></ul>
+  </div>
+</footer>
+
+<dialog id="player" aria-labelledby="playerTitle">
+  <div class="bar"><strong id="playerTitle"></strong><button type="button" id="closePlayer">Close</button></div>
+  <div class="frame"><iframe id="playerFrame" title="Project video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+</dialog>
+
+<script>
+/* =========================================================
+   EDIT HERE. Everything on the site comes from CONFIG and PROJECTS.
+   video: paste any YouTube or Vimeo link (unlisted Vimeo links work too).
+   thumb: path to an image, e.g. "assets/thumbs/nike.jpg". Leave "" for a title card.
+   ========================================================= */
+const CONFIG = {
+  email: "temi@zebrafilms.us",
+  reel: "",                             // TODO: YouTube/Vimeo link to your reel
+  social: [
+    { label: "IMDb", url: "https://www.imdb.com/name/nm3440418/" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/too89/" },
+    { label: "Instagram", url: "https://www.instagram.com/itzebra11/" }
+  ]
+};
+
+const PROJECTS = [
+  // Social
+  { title: "Empress Of: Life Changes - Dream House Socials", client: "Empress Of", kind: "Social", video: "https://www.youtube.com/shorts/NteGl9s1s0I", thumb: "assets/thumbs/empresslifechanges.png"},
+  { title: "Empress Of: Little House on the Mountain - Dream House Socials", client: "Empress Of", kind: "Social", video: "https://youtube.com/shorts/zedbo8J7UW8?feature=share", thumb: "assets/thumbs/empresslittlehouse.jpg"},
+  { title: "KinoFolk: Member Highlights - Brian", client: "KinoFolk, Dir. Temitope Olutunmbi", kind: "Social", video: "https://youtube.com/shorts/L6l49bdVHd8?feature=share", thumb: "assets/thumbs/kinofolkbrian.jpg"},
+  { title: "KinoFolk: Member Highlights - Chelyse", client: "KinoFolk, Dir. Temitope Olutunmbi", kind: "Social", video: "https://youtube.com/shorts/lwXE_4dysfc?feature=share", thumb: "assets/thumbs/kinofolkchelyse.jpg"},
+  { title: "Vote PSA", client: "P3 Poetic People Power", kind: "Social", video: "https://www.youtube.com/watch?v=Z1sYgEFkTrg", thumb: "assets/thumbs/votepsa.jpg" },
+  { title: "Fatherhood in Harlem: How Has Fatherhood Shaped You", client: "Evan Daniels", kind: "Social", video: "https://youtu.be/Ea4TcfF06Hc?si=K0QaPwGuq-Hk8-6V", thumb: "assets/thumbs/fatherhoodshapedyou.jpg" },
+  { title: "Fatherhood in Harlem: Pushing Back on Stereotypes", client: "Evan Daniels", kind: "Social", video: "https://youtu.be/PO9OIOJIgO4?si=NdpNG3imGs2icklI", thumb: "assets/thumbs/fatherhoodstereotypes.jpg" },
+  { title: "Fatherhood in Harlem: The Most Challenging Part of Being a Dad", client: "Evan Daniels", kind: "Social", video: "https://www.youtube.com/watch?v=q6lhn3QMytc", thumb: "assets/thumbs/fatherhoodchallenge.jpg" },
+  // Short form
+  { title: "Most SHOCKING Moments of Season 8 (So Far!) 😱 | Catfish: The TV Show Most Shocking video", client: "MTV", kind: "Short Form", video: "https://www.youtube.com/watch?v=v7u6tmAJYaM", thumb: "assets/thumbs/catfishmostshocking.jpg"},
+  { title: "Finish The Line 🗣: Catfish Edition 🎣", client: "MTV", kind: "Short Form", video: "https://www.youtube.com/watch?v=fdKEdWUUPVE&t=1s", thumb: "assets/thumbs/catfishfinishtheline.jpg"},
+  { title: "Dark Humor, Ep. 1: Juggling Dynamite: Black Comedy and American Politics", client: "Comedy Central / Mass Appeal", kind: "Short Form", video: "https://www.youtube.com/watch?v=YvGAsnM3vUE", thumb: "assets/thumbs/darkhumorep1jugglingdynamite.jpg" },
+  { title: "Dark Humor, Ep. 4: Keeping It Real: A Social and Cultural Maze", client: "Comedy Central / Mass Appeal", kind: "Short Form", video: "https://www.youtube.com/watch?v=WM7unnGSITU", thumb: "assets/thumbs/darkhumorep4keepingitreal.jpg" },
+  { title: "Black Ink Crew NY: New York Critiques Compton", client: "VH1", kind: "Short Form", video: "https://www.youtube.com/watch?v=Q4Y0o7dQq9I", thumb: "assets/thumbs/blankinkcrewcomptoncritique.jpg" },
+  { title: "A Father and Son Show Us a New Kind of Superset", client: "NationSwell / AARP", kind: "Short Form", video: "https://www.youtube.com/watch?v=0dpsb_YRvws", thumb: "assets/thumbs/nationswell.jpg" },
+  { title: "Why It's Impossible to Break Up With Someone During the Holidays", client: "Bustle", kind: "Short Form", video: "https://www.youtube.com/watch?v=YBvaD3VC7nM", thumb: "assets/thumbs/elitedailyholidaybreakup.jpg" },
+  { title: "Decolonizing the Narrative", client: "TZ Production Company", kind: "Short Form", video: "https://www.youtube.com/watch?v=Zt1P4VHwT_4", thumb: "assets/thumbs/decolonizingmuseum.jpg" },
+  { title: "Egyptian Brain", client: "Chazz Giovanni", kind: "Short Form", video: "https://youtu.be/6R7ZoGyuKL8", thumb: "assets/thumbs/egyptianbrain.jpg"},
+  { title: "The Olutunmbi's", client: "Short Film, Dir. Temitope Olutunmbi", kind: "Short Form", video: "https://vimeo.com/73905546?share=copy&fl=sv&fe=ci", thumb: "assets/thumbs/olutunmbis.jpg"},
+  // Narrative
+  { title: "Maktoub", client: "Short Film, Kunle Fasasi", kind: "Narrative", video: "https://youtu.be/plt-gNfBGic", thumb: "assets/thumbs/maktoub.jpg"},
+  { title: "Trauma Bond EP:3 Love Is Blindfolded", client: "Webseries, Dir. Natasha Straley", kind: "Narrative", video: "https://www.youtube.com/watch?v=AiXC0VOKlp0&list=PLG-YWy7VC-nH-ChLU_98uln5n6pTYdwK1", thumb: "assets/thumbs/traumabond.jpg"},
+  { title: "Plantain & Proverbs", client: "Short Film, Dir. Chuckwunonso Dureke", kind: "Narrative", video: "https://vimeo.com/342022849?fl=pl&fe=vl", thumb: "assets/thumbs/plantainproverbs.jpg" },
+  { title: "Things That Remain", client: "Short Film, Dir. Jami Ramberan", kind: "Narrative", video: "https://youtu.be/4bloWiW_PK8", thumb: "assets/thumbs/thingsthatremain.jpg"},
+  { title: "Don't Look", client: "Short Film, Dir. Carlton Daniel", kind: "Narrative", video: "https://youtu.be/7bX84Ar6qYM", thumb: "assets/thumbs/dontlook.jpg"},
+  { title: "The Problem with Erin", client: "Short Film, Dir. Nina Young", kind: "Narrative", video: "https://youtu.be/ki8GcfmXJn8?si=ajVuc3HS4ISCCMJb", thumb: "assets/thumbs/problemerin.jpg"},
+  { title: "Bliss", client: "Short Film, Dir. Jay Simple", kind: "Narrative", video: "https://youtu.be/2OZWHM6jXGA", thumb: "assets/thumbs/bliss.jpg" },
+];
+
+/* ---------- No need to edit below this line ---------- */
+function embedUrl(u, autoplay) {
+  if (!u) return null;
+  const ap = autoplay ? 1 : 0;
+  let m = u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([\w-]{11})/);
+  if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=${ap}&rel=0`;
+  m = u.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([0-9a-f]+))?/);
+  if (m) return `https://player.vimeo.com/video/${m[1]}?autoplay=${ap}${m[2] ? "&h=" + m[2] : ""}`;
+  return u;
+}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// Reel
+const reelFrame = document.getElementById("reelFrame");
+const reelSrc = embedUrl(CONFIG.reel, false);
+if (reelSrc) {
+  reelFrame.innerHTML = `<iframe src="${esc(reelSrc)}" title="Zebra Films reel" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+} else {
+  reelFrame.classList.add("empty");
+  reelFrame.innerHTML = `<span>New reel coming soon</span>`;
+}
+
+// Filters + grid
+const kinds = ["All", ...new Set(PROJECTS.map(p => p.kind))];
+let active = "All";
+const filtersEl = document.getElementById("filters");
+const gridEl = document.getElementById("grid");
+
+function renderFilters() {
+  filtersEl.innerHTML = kinds.map(k => {
+    const n = k === "All" ? PROJECTS.length : PROJECTS.filter(p => p.kind === k).length;
+    return `<button type="button" data-kind="${esc(k)}" aria-pressed="${k === active}">${esc(k)}<span>${n}</span></button>`;
+  }).join("");
+}
+function renderGrid() {
+  const list = PROJECTS.map((p, i) => ({ ...p, i })).filter(p => active === "All" || p.kind === active);
+  gridEl.innerHTML = list.map(p => {
+    const media = p.thumb
+      ? `<img src="${esc(p.thumb)}" alt="" loading="lazy">`
+      : `<div class="slate" aria-hidden="true">${esc(p.title)}</div>`;
+    const inner = `<div class="thumb">${media}${p.video ? '<span class="play" aria-hidden="true"></span>' : ""}</div>
+      <h3>${esc(p.title)}</h3><p class="meta">${esc(p.client)}</p><span class="kind">${esc(p.kind)}</span>`;
+    return p.video
+      ? `<li><button type="button" class="card" data-i="${p.i}" aria-label="Play ${esc(p.title)}">${inner}</button></li>`
+      : `<li><div class="card">${inner}</div></li>`;
+  }).join("");
+}
+filtersEl.addEventListener("click", e => {
+  const b = e.target.closest("button[data-kind]");
+  if (!b) return;
+  active = b.dataset.kind; renderFilters(); renderGrid();
+});
+
+// Player
+const dlg = document.getElementById("player");
+const pf = document.getElementById("playerFrame");
+gridEl.addEventListener("click", e => {
+  const b = e.target.closest("button.card");
+  if (!b) return;
+  const p = PROJECTS[+b.dataset.i];
+  document.getElementById("playerTitle").textContent = p.title;
+  pf.src = embedUrl(p.video, true);
+  dlg.showModal();
+});
+function closePlayer() { dlg.close(); }
+document.getElementById("closePlayer").addEventListener("click", closePlayer);
+dlg.addEventListener("close", () => { pf.src = "about:blank"; });
+dlg.addEventListener("click", e => { if (e.target === dlg) closePlayer(); });
+
+// Contact + footer
+const mail = document.getElementById("mail");
+mail.href = "mailto:" + CONFIG.email; mail.textContent = CONFIG.email;
+document.getElementById("social").innerHTML = CONFIG.social
+  .map(s => `<li><a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.label)}</a></li>`).join("");
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderFilters(); renderGrid();
+</script>
+</body>
+</html>
